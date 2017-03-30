@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BrainEx
+namespace ExcTractor
 {
-    static class Main
+    static class ExcTractor_Main
     {
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +16,8 @@ namespace BrainEx
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form_Main());
+            
         }
     }
 }
