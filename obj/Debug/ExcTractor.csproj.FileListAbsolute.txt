@@ -8,3 +8,4 @@ C:\Users\Note Fabio M\Desktop\Arquivos\Scripts uteis\ExcTractor\ExcTractor\bin\D
 C:\Users\Note Fabio M\Desktop\Arquivos\Scripts uteis\ExcTractor\ExcTractor\bin\Debug\ExcTractor.pdb
 C:\Users\Note Fabio M\Desktop\Arquivos\Scripts uteis\ExcTractor\ExcTractor\obj\Debug\ExcTractor.exe
 C:\Users\Note Fabio M\Desktop\Arquivos\Scripts uteis\ExcTractor\ExcTractor\obj\Debug\ExcTractor.pdb
+C:\Users\Note Fabio M\Desktop\Arquivos\Scripts uteis\ExcTractor\ExcTractor\obj\Debug\ExcTractor.GUI.Form_RenameConfig.resources

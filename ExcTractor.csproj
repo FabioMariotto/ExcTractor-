@@ -71,6 +71,12 @@
     <Compile Include="GUI\Form_NewConfig.Designer.cs">
       <DependentUpon>Form_NewConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Form_RenameConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form_RenameConfig.Designer.cs">
+      <DependentUpon>Form_RenameConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\Form_NewConfig.resx">
       <DependentUpon>Form_NewConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Form_RenameConfig.resx">
+      <DependentUpon>Form_RenameConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

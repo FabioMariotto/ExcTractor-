@@ -13,23 +13,34 @@ namespace ExcTractor.GUI
     public partial class Form_NewConfig : Form
     {
 
-        public string Choosen_Name;
+        public string Choosen_Name = "Choose New Name";
+        public string Choosen_Config = "Excel File";
 
         public Form_NewConfig()
         {
             InitializeComponent();
-            listBox_ConfigTypes.Items.Add("Excel File");
+
+            comboBox_configTypes.Items.Clear();
+            comboBox_configTypes.Items.Add("Excel File");
+            //comboBox_configTypes.Items.Add("Another config option");
+            comboBox_configTypes.SelectedItem = 0;
+            comboBox_configTypes.Refresh();
+
+            textBox_ConfigName.Text = "Choose Name";
+            textBox_ConfigName.SelectionStart = 0;
+            textBox_ConfigName.SelectionLength = textBox_ConfigName.Text.Length;
+
         }
 
         private void textBox_ConfigName_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void button_Create_Click(object sender, EventArgs e)
         {
             
-            if (textBox_ConfigName.Text != "não é repetido") //<----
+            if (!ConfigFile.ConfigNames().Contains(textBox_ConfigName.Text)) 
             {
                 Choosen_Name = textBox_ConfigName.Text;
                 DialogResult = DialogResult.OK;
@@ -37,12 +48,24 @@ namespace ExcTractor.GUI
             else
                 MessageBox.Show("Config name already in use.");
         }
+        
 
         private void button_Cancel_Click(object sender, EventArgs e)
         {
-            {
-                this.DialogResult = DialogResult.Cancel;
-            }
+            
+          this.DialogResult = DialogResult.Cancel;
+            
+        }
+
+        private void Form_NewConfig_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void comboBox_configTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Choosen_Config = comboBox_configTypes.GetItemText(comboBox_configTypes.SelectedItem);
         }
     }
 }

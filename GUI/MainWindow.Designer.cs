@@ -32,25 +32,29 @@
             this.button_NewConfig = new System.Windows.Forms.Button();
             this.button_DeleteConfig = new System.Windows.Forms.Button();
             this.button_RenameConfig = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl_mainTabs = new System.Windows.Forms.TabControl();
             this.tabPage_Config_Excel = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button_Browse_Excel = new System.Windows.Forms.Button();
+            this.button_browseOutPath_Excel = new System.Windows.Forms.Button();
+            this.button_BrowseFile_Excel = new System.Windows.Forms.Button();
             this.button_Save_Excel = new System.Windows.Forms.Button();
             this.button_SheetFilters_Excel = new System.Windows.Forms.Button();
             this.radioButton_ModifiedOnly_Excel = new System.Windows.Forms.RadioButton();
             this.textBox_Period_Excel = new System.Windows.Forms.TextBox();
+            this.textBox_outPutPath_Excel = new System.Windows.Forms.TextBox();
             this.textBox_File_Excel = new System.Windows.Forms.TextBox();
             this.textBox_Password_Excel = new System.Windows.Forms.TextBox();
             this.textBox_User_Excel = new System.Windows.Forms.TextBox();
             this.textBox_Host_Excel = new System.Windows.Forms.TextBox();
             this.tabPage_Log = new System.Windows.Forms.TabPage();
             this.richTextBox_Log = new System.Windows.Forms.RichTextBox();
-            this.tabControl1.SuspendLayout();
+            this.tabControl_mainTabs.SuspendLayout();
             this.tabPage_Config_Excel.SuspendLayout();
             this.tabPage_Log.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +66,7 @@
             this.listBox_ConfigList.Name = "listBox_ConfigList";
             this.listBox_ConfigList.Size = new System.Drawing.Size(146, 342);
             this.listBox_ConfigList.TabIndex = 0;
+            this.listBox_ConfigList.SelectedIndexChanged += new System.EventHandler(this.listBox_ConfigList_SelectedIndexChanged);
             // 
             // button_NewConfig
             // 
@@ -93,28 +98,32 @@
             this.button_RenameConfig.UseVisualStyleBackColor = true;
             this.button_RenameConfig.Click += new System.EventHandler(this.button_RenameConfig_Click);
             // 
-            // tabControl1
+            // tabControl_mainTabs
             // 
-            this.tabControl1.Controls.Add(this.tabPage_Config_Excel);
-            this.tabControl1.Controls.Add(this.tabPage_Log);
-            this.tabControl1.Location = new System.Drawing.Point(178, 13);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(678, 442);
-            this.tabControl1.TabIndex = 2;
+            this.tabControl_mainTabs.Controls.Add(this.tabPage_Config_Excel);
+            this.tabControl_mainTabs.Controls.Add(this.tabPage_Log);
+            this.tabControl_mainTabs.Location = new System.Drawing.Point(178, 13);
+            this.tabControl_mainTabs.Name = "tabControl_mainTabs";
+            this.tabControl_mainTabs.SelectedIndex = 0;
+            this.tabControl_mainTabs.Size = new System.Drawing.Size(678, 442);
+            this.tabControl_mainTabs.TabIndex = 2;
             // 
             // tabPage_Config_Excel
             // 
+            this.tabPage_Config_Excel.Controls.Add(this.label6);
             this.tabPage_Config_Excel.Controls.Add(this.label5);
             this.tabPage_Config_Excel.Controls.Add(this.label4);
             this.tabPage_Config_Excel.Controls.Add(this.label3);
             this.tabPage_Config_Excel.Controls.Add(this.label2);
+            this.tabPage_Config_Excel.Controls.Add(this.label7);
             this.tabPage_Config_Excel.Controls.Add(this.label1);
-            this.tabPage_Config_Excel.Controls.Add(this.button_Browse_Excel);
+            this.tabPage_Config_Excel.Controls.Add(this.button_browseOutPath_Excel);
+            this.tabPage_Config_Excel.Controls.Add(this.button_BrowseFile_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.button_Save_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.button_SheetFilters_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.radioButton_ModifiedOnly_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.textBox_Period_Excel);
+            this.tabPage_Config_Excel.Controls.Add(this.textBox_outPutPath_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.textBox_File_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.textBox_Password_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.textBox_User_Excel);
@@ -126,6 +135,15 @@
             this.tabPage_Config_Excel.TabIndex = 0;
             this.tabPage_Config_Excel.Text = "Config";
             this.tabPage_Config_Excel.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(226, 219);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "[minutes]";
             // 
             // label5
             // 
@@ -163,6 +181,15 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Host IP";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 189);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Output path";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -172,15 +199,25 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "File";
             // 
-            // button_Browse_Excel
+            // button_browseOutPath_Excel
             // 
-            this.button_Browse_Excel.Enabled = false;
-            this.button_Browse_Excel.Location = new System.Drawing.Point(609, 30);
-            this.button_Browse_Excel.Name = "button_Browse_Excel";
-            this.button_Browse_Excel.Size = new System.Drawing.Size(25, 20);
-            this.button_Browse_Excel.TabIndex = 3;
-            this.button_Browse_Excel.Text = "...";
-            this.button_Browse_Excel.UseVisualStyleBackColor = true;
+            this.button_browseOutPath_Excel.Enabled = false;
+            this.button_browseOutPath_Excel.Location = new System.Drawing.Point(609, 186);
+            this.button_browseOutPath_Excel.Name = "button_browseOutPath_Excel";
+            this.button_browseOutPath_Excel.Size = new System.Drawing.Size(25, 20);
+            this.button_browseOutPath_Excel.TabIndex = 3;
+            this.button_browseOutPath_Excel.Text = "...";
+            this.button_browseOutPath_Excel.UseVisualStyleBackColor = true;
+            // 
+            // button_BrowseFile_Excel
+            // 
+            this.button_BrowseFile_Excel.Enabled = false;
+            this.button_BrowseFile_Excel.Location = new System.Drawing.Point(609, 30);
+            this.button_BrowseFile_Excel.Name = "button_BrowseFile_Excel";
+            this.button_BrowseFile_Excel.Size = new System.Drawing.Size(25, 20);
+            this.button_BrowseFile_Excel.TabIndex = 3;
+            this.button_BrowseFile_Excel.Text = "...";
+            this.button_BrowseFile_Excel.UseVisualStyleBackColor = true;
             // 
             // button_Save_Excel
             // 
@@ -219,6 +256,13 @@
             this.textBox_Period_Excel.Name = "textBox_Period_Excel";
             this.textBox_Period_Excel.Size = new System.Drawing.Size(118, 20);
             this.textBox_Period_Excel.TabIndex = 1;
+            // 
+            // textBox_outPutPath_Excel
+            // 
+            this.textBox_outPutPath_Excel.Location = new System.Drawing.Point(102, 186);
+            this.textBox_outPutPath_Excel.Name = "textBox_outPutPath_Excel";
+            this.textBox_outPutPath_Excel.Size = new System.Drawing.Size(501, 20);
+            this.textBox_outPutPath_Excel.TabIndex = 0;
             // 
             // textBox_File_Excel
             // 
@@ -261,27 +305,28 @@
             // 
             // richTextBox_Log
             // 
-            this.richTextBox_Log.Location = new System.Drawing.Point(19, 18);
+            this.richTextBox_Log.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.richTextBox_Log.Location = new System.Drawing.Point(6, 6);
             this.richTextBox_Log.Name = "richTextBox_Log";
             this.richTextBox_Log.ReadOnly = true;
             this.richTextBox_Log.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox_Log.Size = new System.Drawing.Size(636, 381);
+            this.richTextBox_Log.Size = new System.Drawing.Size(658, 404);
             this.richTextBox_Log.TabIndex = 0;
             this.richTextBox_Log.Text = "";
             // 
-            // Form1
+            // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 462);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(864, 461);
+            this.Controls.Add(this.tabControl_mainTabs);
             this.Controls.Add(this.button_RenameConfig);
             this.Controls.Add(this.button_DeleteConfig);
             this.Controls.Add(this.button_NewConfig);
             this.Controls.Add(this.listBox_ConfigList);
-            this.Name = "Form1";
+            this.Name = "Form_Main";
             this.Text = ".: Maze - Excel Data Interface :.";
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl_mainTabs.ResumeLayout(false);
             this.tabPage_Config_Excel.ResumeLayout(false);
             this.tabPage_Config_Excel.PerformLayout();
             this.tabPage_Log.ResumeLayout(false);
@@ -295,7 +340,7 @@
         private System.Windows.Forms.Button button_NewConfig;
         private System.Windows.Forms.Button button_DeleteConfig;
         private System.Windows.Forms.Button button_RenameConfig;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl_mainTabs;
         private System.Windows.Forms.TabPage tabPage_Config_Excel;
         private System.Windows.Forms.TabPage tabPage_Log;
         private System.Windows.Forms.Button button_Save_Excel;
@@ -311,8 +356,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_Browse_Excel;
+        private System.Windows.Forms.Button button_BrowseFile_Excel;
         private System.Windows.Forms.RichTextBox richTextBox_Log;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button_browseOutPath_Excel;
+        private System.Windows.Forms.TextBox textBox_outPutPath_Excel;
     }
 }
 
