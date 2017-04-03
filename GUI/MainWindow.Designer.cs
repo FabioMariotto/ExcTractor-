@@ -34,6 +34,9 @@
             this.button_RenameConfig = new System.Windows.Forms.Button();
             this.tabControl_mainTabs = new System.Windows.Forms.TabControl();
             this.tabPage_Config_Excel = new System.Windows.Forms.TabPage();
+            this.checkBox_modifiedOnly_Excel = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox_NamePrefix_Excel = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,7 +48,6 @@
             this.button_BrowseFile_Excel = new System.Windows.Forms.Button();
             this.button_Save_Excel = new System.Windows.Forms.Button();
             this.button_SheetFilters_Excel = new System.Windows.Forms.Button();
-            this.radioButton_ModifiedOnly_Excel = new System.Windows.Forms.RadioButton();
             this.textBox_Period_Excel = new System.Windows.Forms.TextBox();
             this.textBox_outPutPath_Excel = new System.Windows.Forms.TextBox();
             this.textBox_File_Excel = new System.Windows.Forms.TextBox();
@@ -74,26 +76,29 @@
             this.button_NewConfig.Name = "button_NewConfig";
             this.button_NewConfig.Size = new System.Drawing.Size(145, 23);
             this.button_NewConfig.TabIndex = 1;
+            this.button_NewConfig.TabStop = false;
             this.button_NewConfig.Text = "New Config";
             this.button_NewConfig.UseVisualStyleBackColor = true;
             this.button_NewConfig.Click += new System.EventHandler(this.button_NewConfig_Click);
             // 
             // button_DeleteConfig
             // 
-            this.button_DeleteConfig.Location = new System.Drawing.Point(16, 398);
+            this.button_DeleteConfig.Location = new System.Drawing.Point(15, 423);
             this.button_DeleteConfig.Name = "button_DeleteConfig";
             this.button_DeleteConfig.Size = new System.Drawing.Size(145, 23);
             this.button_DeleteConfig.TabIndex = 1;
+            this.button_DeleteConfig.TabStop = false;
             this.button_DeleteConfig.Text = "Delete Config";
             this.button_DeleteConfig.UseVisualStyleBackColor = true;
             this.button_DeleteConfig.Click += new System.EventHandler(this.button_DeleteConfig_Click);
             // 
             // button_RenameConfig
             // 
-            this.button_RenameConfig.Location = new System.Drawing.Point(16, 428);
+            this.button_RenameConfig.Location = new System.Drawing.Point(16, 394);
             this.button_RenameConfig.Name = "button_RenameConfig";
             this.button_RenameConfig.Size = new System.Drawing.Size(145, 23);
             this.button_RenameConfig.TabIndex = 1;
+            this.button_RenameConfig.TabStop = false;
             this.button_RenameConfig.Text = "Rename Config";
             this.button_RenameConfig.UseVisualStyleBackColor = true;
             this.button_RenameConfig.Click += new System.EventHandler(this.button_RenameConfig_Click);
@@ -110,6 +115,9 @@
             // 
             // tabPage_Config_Excel
             // 
+            this.tabPage_Config_Excel.Controls.Add(this.checkBox_modifiedOnly_Excel);
+            this.tabPage_Config_Excel.Controls.Add(this.label8);
+            this.tabPage_Config_Excel.Controls.Add(this.textBox_NamePrefix_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.label6);
             this.tabPage_Config_Excel.Controls.Add(this.label5);
             this.tabPage_Config_Excel.Controls.Add(this.label4);
@@ -121,7 +129,6 @@
             this.tabPage_Config_Excel.Controls.Add(this.button_BrowseFile_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.button_Save_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.button_SheetFilters_Excel);
-            this.tabPage_Config_Excel.Controls.Add(this.radioButton_ModifiedOnly_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.textBox_Period_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.textBox_outPutPath_Excel);
             this.tabPage_Config_Excel.Controls.Add(this.textBox_File_Excel);
@@ -135,6 +142,34 @@
             this.tabPage_Config_Excel.TabIndex = 0;
             this.tabPage_Config_Excel.Text = "Config";
             this.tabPage_Config_Excel.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_modifiedOnly_Excel
+            // 
+            this.checkBox_modifiedOnly_Excel.AutoSize = true;
+            this.checkBox_modifiedOnly_Excel.Location = new System.Drawing.Point(102, 247);
+            this.checkBox_modifiedOnly_Excel.Name = "checkBox_modifiedOnly_Excel";
+            this.checkBox_modifiedOnly_Excel.Size = new System.Drawing.Size(109, 17);
+            this.checkBox_modifiedOnly_Excel.TabIndex = 8;
+            this.checkBox_modifiedOnly_Excel.Text = "Modified files only";
+            this.checkBox_modifiedOnly_Excel.UseVisualStyleBackColor = true;
+            this.checkBox_modifiedOnly_Excel.CheckedChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 167);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "File Name Prefix";
+            // 
+            // textBox_NamePrefix_Excel
+            // 
+            this.textBox_NamePrefix_Excel.Location = new System.Drawing.Point(102, 160);
+            this.textBox_NamePrefix_Excel.Name = "textBox_NamePrefix_Excel";
+            this.textBox_NamePrefix_Excel.Size = new System.Drawing.Size(118, 20);
+            this.textBox_NamePrefix_Excel.TabIndex = 5;
+            this.textBox_NamePrefix_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // label6
             // 
@@ -206,6 +241,7 @@
             this.button_browseOutPath_Excel.Name = "button_browseOutPath_Excel";
             this.button_browseOutPath_Excel.Size = new System.Drawing.Size(25, 20);
             this.button_browseOutPath_Excel.TabIndex = 3;
+            this.button_browseOutPath_Excel.TabStop = false;
             this.button_browseOutPath_Excel.Text = "...";
             this.button_browseOutPath_Excel.UseVisualStyleBackColor = true;
             // 
@@ -216,6 +252,7 @@
             this.button_BrowseFile_Excel.Name = "button_BrowseFile_Excel";
             this.button_BrowseFile_Excel.Size = new System.Drawing.Size(25, 20);
             this.button_BrowseFile_Excel.TabIndex = 3;
+            this.button_BrowseFile_Excel.TabStop = false;
             this.button_BrowseFile_Excel.Text = "...";
             this.button_BrowseFile_Excel.UseVisualStyleBackColor = true;
             // 
@@ -225,72 +262,68 @@
             this.button_Save_Excel.Location = new System.Drawing.Point(528, 381);
             this.button_Save_Excel.Name = "button_Save_Excel";
             this.button_Save_Excel.Size = new System.Drawing.Size(134, 29);
-            this.button_Save_Excel.TabIndex = 3;
+            this.button_Save_Excel.TabIndex = 9;
             this.button_Save_Excel.Text = "Saved";
             this.button_Save_Excel.UseVisualStyleBackColor = true;
+            this.button_Save_Excel.Click += new System.EventHandler(this.button_Save_Excel_Click);
             // 
             // button_SheetFilters_Excel
             // 
             this.button_SheetFilters_Excel.Location = new System.Drawing.Point(102, 319);
             this.button_SheetFilters_Excel.Name = "button_SheetFilters_Excel";
             this.button_SheetFilters_Excel.Size = new System.Drawing.Size(177, 34);
-            this.button_SheetFilters_Excel.TabIndex = 3;
+            this.button_SheetFilters_Excel.TabIndex = 0;
+            this.button_SheetFilters_Excel.TabStop = false;
             this.button_SheetFilters_Excel.Text = "Sheet Filters";
             this.button_SheetFilters_Excel.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_ModifiedOnly_Excel
-            // 
-            this.radioButton_ModifiedOnly_Excel.AutoSize = true;
-            this.radioButton_ModifiedOnly_Excel.Location = new System.Drawing.Point(102, 250);
-            this.radioButton_ModifiedOnly_Excel.Name = "radioButton_ModifiedOnly_Excel";
-            this.radioButton_ModifiedOnly_Excel.Size = new System.Drawing.Size(124, 17);
-            this.radioButton_ModifiedOnly_Excel.TabIndex = 2;
-            this.radioButton_ModifiedOnly_Excel.TabStop = true;
-            this.radioButton_ModifiedOnly_Excel.Text = "On modified files only";
-            this.radioButton_ModifiedOnly_Excel.UseVisualStyleBackColor = true;
-            this.radioButton_ModifiedOnly_Excel.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // textBox_Period_Excel
             // 
             this.textBox_Period_Excel.Location = new System.Drawing.Point(102, 212);
             this.textBox_Period_Excel.Name = "textBox_Period_Excel";
             this.textBox_Period_Excel.Size = new System.Drawing.Size(118, 20);
-            this.textBox_Period_Excel.TabIndex = 1;
+            this.textBox_Period_Excel.TabIndex = 7;
+            this.textBox_Period_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_outPutPath_Excel
             // 
             this.textBox_outPutPath_Excel.Location = new System.Drawing.Point(102, 186);
             this.textBox_outPutPath_Excel.Name = "textBox_outPutPath_Excel";
             this.textBox_outPutPath_Excel.Size = new System.Drawing.Size(501, 20);
-            this.textBox_outPutPath_Excel.TabIndex = 0;
+            this.textBox_outPutPath_Excel.TabIndex = 6;
+            this.textBox_outPutPath_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_File_Excel
             // 
             this.textBox_File_Excel.Location = new System.Drawing.Point(102, 30);
             this.textBox_File_Excel.Name = "textBox_File_Excel";
             this.textBox_File_Excel.Size = new System.Drawing.Size(501, 20);
-            this.textBox_File_Excel.TabIndex = 0;
+            this.textBox_File_Excel.TabIndex = 1;
+            this.textBox_File_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_Password_Excel
             // 
             this.textBox_Password_Excel.Location = new System.Drawing.Point(102, 108);
             this.textBox_Password_Excel.Name = "textBox_Password_Excel";
             this.textBox_Password_Excel.Size = new System.Drawing.Size(177, 20);
-            this.textBox_Password_Excel.TabIndex = 0;
+            this.textBox_Password_Excel.TabIndex = 4;
+            this.textBox_Password_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_User_Excel
             // 
             this.textBox_User_Excel.Location = new System.Drawing.Point(102, 82);
             this.textBox_User_Excel.Name = "textBox_User_Excel";
             this.textBox_User_Excel.Size = new System.Drawing.Size(177, 20);
-            this.textBox_User_Excel.TabIndex = 0;
+            this.textBox_User_Excel.TabIndex = 3;
+            this.textBox_User_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_Host_Excel
             // 
             this.textBox_Host_Excel.Location = new System.Drawing.Point(102, 56);
             this.textBox_Host_Excel.Name = "textBox_Host_Excel";
             this.textBox_Host_Excel.Size = new System.Drawing.Size(177, 20);
-            this.textBox_Host_Excel.TabIndex = 0;
+            this.textBox_Host_Excel.TabIndex = 2;
+            this.textBox_Host_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // tabPage_Log
             // 
@@ -306,11 +339,11 @@
             // richTextBox_Log
             // 
             this.richTextBox_Log.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.richTextBox_Log.Location = new System.Drawing.Point(6, 6);
+            this.richTextBox_Log.Location = new System.Drawing.Point(0, 2);
             this.richTextBox_Log.Name = "richTextBox_Log";
             this.richTextBox_Log.ReadOnly = true;
             this.richTextBox_Log.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox_Log.Size = new System.Drawing.Size(658, 404);
+            this.richTextBox_Log.Size = new System.Drawing.Size(668, 414);
             this.richTextBox_Log.TabIndex = 0;
             this.richTextBox_Log.Text = "";
             // 
@@ -345,7 +378,6 @@
         private System.Windows.Forms.TabPage tabPage_Log;
         private System.Windows.Forms.Button button_Save_Excel;
         private System.Windows.Forms.Button button_SheetFilters_Excel;
-        private System.Windows.Forms.RadioButton radioButton_ModifiedOnly_Excel;
         private System.Windows.Forms.TextBox textBox_Period_Excel;
         private System.Windows.Forms.TextBox textBox_File_Excel;
         private System.Windows.Forms.TextBox textBox_Password_Excel;
@@ -362,6 +394,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_browseOutPath_Excel;
         private System.Windows.Forms.TextBox textBox_outPutPath_Excel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox_NamePrefix_Excel;
+        private System.Windows.Forms.CheckBox checkBox_modifiedOnly_Excel;
     }
 }
 

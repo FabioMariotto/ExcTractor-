@@ -29,6 +29,14 @@ namespace ExcTractor.GUI
 
         }
 
+        private void Enter_Clicked(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                button_Cancel_Click(null, null);
+            else if (e.KeyCode == Keys.Enter)
+                button_Rename_Click(null, null);
+        }
+
         private void button_Rename_Click(object sender, EventArgs e)
         {
             if (!ConfigFile.ConfigNames().Contains(textBox_ConfigName.Text) && textBox_ConfigName.Text != Oldname) 

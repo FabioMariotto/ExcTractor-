@@ -44,7 +44,7 @@ namespace ExcTractor.GUI
             this.textBox_ConfigName.TabIndex = 0;
             this.textBox_ConfigName.Text = "Choose a name";
             this.textBox_ConfigName.TextChanged += new System.EventHandler(this.textBox_ConfigName_TextChanged);
-            this.textBox_ConfigName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button_Create_Click);
+            this.textBox_ConfigName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Clicked);
             // 
             // button_Create
             // 

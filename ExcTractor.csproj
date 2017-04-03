@@ -84,6 +84,7 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcTractor_Main.cs" />
+    <Compile Include="LogFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\Form_NewConfig.resx">
       <DependentUpon>Form_NewConfig.cs</DependentUpon>

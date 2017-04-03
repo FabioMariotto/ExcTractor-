@@ -41,7 +41,7 @@ namespace ExcTractor
                     tabControl_mainTabs.TabPages.Add(tabPage_Log);
                     textBox_Host_Excel.Text = "127.0.0.1";
                     textBox_Period_Excel.Text = "3";
-                    radioButton_ModifiedOnly_Excel.Checked = true;
+                    checkBox_modifiedOnly_Excel.Checked = true;
                     //MessageBox.Show(formnewConfig.Choosen_Config);
                     ConfigFile.CreateNewConfig(formnewConfig.Choosen_Name);
                     ConfigFile.write_atribute(formnewConfig.Choosen_Name, "Host", "127.0.0.1");
@@ -56,7 +56,7 @@ namespace ExcTractor
             formnewConfig.Close();
             formnewConfig.Dispose();
             tabControl_mainTabs.Enabled = true;
-            //showConfig();
+            
         }
 
 
@@ -105,9 +105,11 @@ namespace ExcTractor
             }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        //Event when any text box on EXCEL tab value is changed
+        private void ExcelTab_AnyElement_ValueChanged(object sender, EventArgs e)
         {
-
+            button_Save_Excel.Enabled = true;
+            button_Save_Excel.Text = "Save";
         }
 
         private void listBox_ConfigList_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,20 +128,47 @@ namespace ExcTractor
                     textBox_Password_Excel.Text = ConfigFile.read_atribute(configName, "Password");
                     textBox_outPutPath_Excel.Text = ConfigFile.read_atribute(configName, "Destination");
                     textBox_Period_Excel.Text = ConfigFile.read_atribute(configName, "Period");
+                    textBox_NamePrefix_Excel.Text = ConfigFile.read_atribute(configName, "NamePrefix");
                     if (ConfigFile.read_atribute(configName, "ModifiedOnly") == "1")
-                        radioButton_ModifiedOnly_Excel.Checked = true;
+                       checkBox_modifiedOnly_Excel.Checked = true;
                     else
-                        radioButton_ModifiedOnly_Excel.Checked = false;
+                        checkBox_modifiedOnly_Excel.Checked = false;
                     tabControl_mainTabs.TabPages.Add(tabPage_Config_Excel);
                     tabControl_mainTabs.TabPages.Add(tabPage_Log);
+                    button_Save_Excel.Enabled = false;
+                    button_Save_Excel.Text = "Saved";
                 }
-                else if (tipo == "outro tipo de config especifico%¨&")
+                else if (tipo == "outro tipo de config especifico")
                 {
 
                 }
 
             }
                 
+        }
+
+        private void button_Save_Excel_Click(object sender, EventArgs e)
+        {
+            string configName = listBox_ConfigList.GetItemText(listBox_ConfigList.SelectedItem);
+            string tipo = ConfigFile.read_atribute(configName, "Type");
+
+            if (tipo == ExcelTypeConfig)
+            {
+                ConfigFile.write_atribute(configName, "FilePath", textBox_File_Excel.Text);
+                ConfigFile.write_atribute(configName, "Host", textBox_Host_Excel.Text);
+                ConfigFile.write_atribute(configName, "User", textBox_User_Excel.Text);
+                ConfigFile.write_atribute(configName, "Password", textBox_Password_Excel.Text);
+                ConfigFile.write_atribute(configName, "Destination", textBox_outPutPath_Excel.Text);
+                ConfigFile.write_atribute(configName, "Period", textBox_Period_Excel.Text);
+                ConfigFile.write_atribute(configName, "NamePrefix", textBox_NamePrefix_Excel.Text);
+                if (checkBox_modifiedOnly_Excel.Checked == true)
+                    ConfigFile.write_atribute(configName, "ModifiedOnly", "1");
+                else
+                    ConfigFile.write_atribute(configName, "ModifiedOnly", "0");
+                button_Save_Excel.Enabled = false;
+                button_Save_Excel.Text = "Saved";
+            }
+
         }
     }
 }

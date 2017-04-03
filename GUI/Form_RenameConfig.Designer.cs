@@ -63,7 +63,7 @@ namespace ExcTractor.GUI
             this.textBox_ConfigName.Size = new System.Drawing.Size(185, 20);
             this.textBox_ConfigName.TabIndex = 3;
             this.textBox_ConfigName.Text = "Choose a new name";
-            this.textBox_ConfigName.KeyDown += new KeyEventHandler(this.button_Rename_Click);
+            this.textBox_ConfigName.KeyDown += new KeyEventHandler(this.Enter_Clicked);
             // 
             // Form_RenameConfig
             // 

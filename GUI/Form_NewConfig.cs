@@ -49,6 +49,13 @@ namespace ExcTractor.GUI
                 MessageBox.Show("Config name already in use.");
         }
         
+        private void Enter_Clicked(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                button_Cancel_Click(null, null);
+            else if (e.KeyCode == Keys.Enter)
+                button_Create_Click(null, null);
+        }
 
         private void button_Cancel_Click(object sender, EventArgs e)
         {

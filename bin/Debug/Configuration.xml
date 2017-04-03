@@ -1,3 +1,3 @@
 <AllConfig>
-  <Config Name="Choose Name" Host="127.0.0.1" Type="Excel File" />
+  <Config Name="Excel Config 1" Host="127.0.0.3" Type="Excel File" FilePath="C:/local/sublocal/file*name.xlsx" User="userName" Password="Password" Destination="D:/outrolocal/sublocal/" Period="10" NamePrefix="Boletin_" ModifiedOnly="1" />
 </AllConfig>
