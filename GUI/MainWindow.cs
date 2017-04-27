@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +15,6 @@ namespace ExcTractor
 {
     public partial class Form_Main : Form
     {
-
-        string ExcelTypeConfig = "Excel File";
 
         public Form_Main()
         {
@@ -35,17 +35,18 @@ namespace ExcTractor
 
                 tabControl_mainTabs.TabPages.Clear();
 
-                if (formnewConfig.Choosen_Config == ExcelTypeConfig)
+                if (formnewConfig.Choosen_Config == ConfigFile.TypeConfig_Excel)
                 {
                     tabControl_mainTabs.TabPages.Add(tabPage_Config_Excel);
                     tabControl_mainTabs.TabPages.Add(tabPage_Log);
                     textBox_Host_Excel.Text = "127.0.0.1";
                     textBox_Period_Excel.Text = "3";
                     checkBox_modifiedOnly_Excel.Checked = true;
+                    
                     //MessageBox.Show(formnewConfig.Choosen_Config);
                     ConfigFile.CreateNewConfig(formnewConfig.Choosen_Name);
-                    ConfigFile.write_atribute(formnewConfig.Choosen_Name, "Host", "127.0.0.1");
-                    ConfigFile.write_atribute(formnewConfig.Choosen_Name, "Type", ExcelTypeConfig);
+                    ConfigFile.write_attribute(formnewConfig.Choosen_Name, ConfigFile.AttribExcel_Host, "127.0.0.1");
+                    ConfigFile.write_attribute(formnewConfig.Choosen_Name, ConfigFile.Attrib_Type, ConfigFile.TypeConfig_Excel);
 
                 }
                 listBox_ConfigList.Items.Add(formnewConfig.Choosen_Name);
@@ -117,19 +118,20 @@ namespace ExcTractor
             if (listBox_ConfigList.SelectedIndex != -1)
             {
                 string configName = listBox_ConfigList.GetItemText(listBox_ConfigList.SelectedItem);
-                string tipo = ConfigFile.read_atribute(configName, "Type");
+                string tipo = ConfigFile.read_attribute(configName, ConfigFile.Attrib_Type);
                 tabControl_mainTabs.TabPages.Clear();
 
-                if (tipo == ExcelTypeConfig)
+                if (tipo == ConfigFile.TypeConfig_Excel)
                 {
-                    textBox_File_Excel.Text = ConfigFile.read_atribute(configName, "FilePath");
-                    textBox_Host_Excel.Text = ConfigFile.read_atribute(configName, "Host");
-                    textBox_User_Excel.Text = ConfigFile.read_atribute(configName, "User");
-                    textBox_Password_Excel.Text = ConfigFile.read_atribute(configName, "Password");
-                    textBox_outPutPath_Excel.Text = ConfigFile.read_atribute(configName, "Destination");
-                    textBox_Period_Excel.Text = ConfigFile.read_atribute(configName, "Period");
-                    textBox_NamePrefix_Excel.Text = ConfigFile.read_atribute(configName, "NamePrefix");
-                    if (ConfigFile.read_atribute(configName, "ModifiedOnly") == "1")
+                    textBox_File_Excel.Text = ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_FilePath);
+                    textBox_Host_Excel.Text = ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_Host);
+                    textBox_User_Excel.Text = ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_User);
+                    textBox_Password_Excel.Text = ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_Password);
+                    textBox_outPutPath_Excel.Text = ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_Destination);
+                    textBox_Period_Excel.Text = ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_Period);
+                    textBox_NamePrefix_Excel.Text = ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_NamePrefix);
+                    //button_SheetFilters_Excel.Text = "Whitelist_" + configName + ".txt";
+                    if (ConfigFile.read_attribute(configName, ConfigFile.AttribExcel_ModifiedOnly) == "1")
                        checkBox_modifiedOnly_Excel.Checked = true;
                     else
                         checkBox_modifiedOnly_Excel.Checked = false;
@@ -150,24 +152,54 @@ namespace ExcTractor
         private void button_Save_Excel_Click(object sender, EventArgs e)
         {
             string configName = listBox_ConfigList.GetItemText(listBox_ConfigList.SelectedItem);
-            string tipo = ConfigFile.read_atribute(configName, "Type");
+            string tipo = ConfigFile.read_attribute(configName, ConfigFile.Attrib_Type);
 
-            if (tipo == ExcelTypeConfig)
+            if (tipo == ConfigFile.TypeConfig_Excel)
             {
-                ConfigFile.write_atribute(configName, "FilePath", textBox_File_Excel.Text);
-                ConfigFile.write_atribute(configName, "Host", textBox_Host_Excel.Text);
-                ConfigFile.write_atribute(configName, "User", textBox_User_Excel.Text);
-                ConfigFile.write_atribute(configName, "Password", textBox_Password_Excel.Text);
-                ConfigFile.write_atribute(configName, "Destination", textBox_outPutPath_Excel.Text);
-                ConfigFile.write_atribute(configName, "Period", textBox_Period_Excel.Text);
-                ConfigFile.write_atribute(configName, "NamePrefix", textBox_NamePrefix_Excel.Text);
+                ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_FilePath, textBox_File_Excel.Text);
+                ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_Host, textBox_Host_Excel.Text);
+                ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_User, textBox_User_Excel.Text);
+                ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_Password, textBox_Password_Excel.Text);
+                ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_Destination, textBox_outPutPath_Excel.Text);
+                ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_Period, textBox_Period_Excel.Text);
+                ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_NamePrefix, textBox_NamePrefix_Excel.Text);
                 if (checkBox_modifiedOnly_Excel.Checked == true)
-                    ConfigFile.write_atribute(configName, "ModifiedOnly", "1");
+                    ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_ModifiedOnly, "1");
                 else
-                    ConfigFile.write_atribute(configName, "ModifiedOnly", "0");
+                    ConfigFile.write_attribute(configName, ConfigFile.AttribExcel_ModifiedOnly, "0");
                 button_Save_Excel.Enabled = false;
                 button_Save_Excel.Text = "Saved";
             }
+
+        }
+
+        private void button_SheetFilters_Excel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (listBox_ConfigList.SelectedIndex != -1)
+                {
+                    string configName = listBox_ConfigList.GetItemText(listBox_ConfigList.SelectedItem);
+
+                    string whitelist_path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Whitelist_" + configName + ".txt"); //.ToString().Replace("__", "_")
+                    if (!File.Exists(whitelist_path))
+                        File.Create(whitelist_path).Close();            
+                    Process p = Process.Start(whitelist_path);
+                    //p.WaitForExit();
+                    return;   
+                }
+
+            }
+            catch (Exception exp)
+            {
+                LogFile.write_LogFile(exp.Message);
+            }
+            return;
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
 
         }
     }

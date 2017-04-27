@@ -9,6 +9,9 @@ namespace ExcTractor
 {
     public static class LogFile
     {
+
+        public static string InstalPath = AppDomain.CurrentDomain.BaseDirectory;
+
         /// <summary>
         /// Returns all text from the LOG file
         /// </summary>
@@ -16,7 +19,8 @@ namespace ExcTractor
         private static string read_LogFile()
         {
 
-            string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
+            //string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
+            string LogFile = InstalPath + "\\Log.txt";
 
 
             if (File.Exists(LogFile) == true)
@@ -44,14 +48,15 @@ namespace ExcTractor
 
             try
             {
-                string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
+                //string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
+                string LogFile = InstalPath + "\\Log.txt";
 
 
                 if (File.Exists(LogFile) == true)
                 {
                     StreamWriter configWriter;
                     configWriter = new StreamWriter(LogFile, append);
-                    configWriter.Write(DateTime.Now.ToString() + "; " + text);
+                    configWriter.Write("\r\n" + DateTime.Now.ToString() + "; " + text);
                     configWriter.Close();
                 }
                 else
@@ -71,14 +76,14 @@ namespace ExcTractor
 
             try
             {
-                string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
-
+                //string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
+                string LogFile = InstalPath + "\\Log.txt";
 
                 if (File.Exists(LogFile) == true)
                 {
                     StreamWriter configWriter;
                     configWriter = new StreamWriter(LogFile, append);
-                    configWriter.Write(DateTime.Now.ToString() + "; " + except.Source.ToString().Trim() + ": " + except.Message.ToString().Trim());
+                    configWriter.Write("\r\n" + DateTime.Now.ToString() + "; " + except.Source.ToString().Trim() + ": " + except.Message.ToString().Trim());
                     configWriter.Close();
                 }
                 else

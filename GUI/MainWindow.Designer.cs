@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox_ConfigList = new System.Windows.Forms.ListBox();
             this.button_NewConfig = new System.Windows.Forms.Button();
             this.button_DeleteConfig = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             this.textBox_Host_Excel = new System.Windows.Forms.TextBox();
             this.tabPage_Log = new System.Windows.Forms.TabPage();
             this.richTextBox_Log = new System.Windows.Forms.RichTextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl_mainTabs.SuspendLayout();
             this.tabPage_Config_Excel.SuspendLayout();
             this.tabPage_Log.SuspendLayout();
@@ -176,9 +178,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(226, 219);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 4;
-            this.label6.Text = "[minutes]";
+            this.label6.Text = "[seconds]";
             // 
             // label5
             // 
@@ -275,7 +277,9 @@
             this.button_SheetFilters_Excel.TabIndex = 0;
             this.button_SheetFilters_Excel.TabStop = false;
             this.button_SheetFilters_Excel.Text = "Sheet Filters";
+            this.toolTip1.SetToolTip(this.button_SheetFilters_Excel, "Excel File; Sheet Name; 1st tag name[optional] (use * or ? as wild cards)");
             this.button_SheetFilters_Excel.UseVisualStyleBackColor = true;
+            this.button_SheetFilters_Excel.Click += new System.EventHandler(this.button_SheetFilters_Excel_Click);
             // 
             // textBox_Period_Excel
             // 
@@ -347,6 +351,16 @@
             this.richTextBox_Log.TabIndex = 0;
             this.richTextBox_Log.Text = "";
             // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 10000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            this.toolTip1.SetToolTip(this.textBox_File_Excel, "Ex: C:\\Folder\\Subfolder\\FileName.extension (use * or ? as wild cards)");
+            this.toolTip1.SetToolTip(this.textBox_outPutPath_Excel, "Ex: C:\\Folder\\Subfolder\\ (use * or ? as wild cards)");
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +411,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox_NamePrefix_Excel;
         private System.Windows.Forms.CheckBox checkBox_modifiedOnly_Excel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
