@@ -295,6 +295,7 @@
             this.textBox_outPutPath_Excel.Name = "textBox_outPutPath_Excel";
             this.textBox_outPutPath_Excel.Size = new System.Drawing.Size(501, 20);
             this.textBox_outPutPath_Excel.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.textBox_outPutPath_Excel, "Ex: C:\\Folder\\Subfolder\\ (use * or ? as wild cards)");
             this.textBox_outPutPath_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_File_Excel
@@ -303,6 +304,7 @@
             this.textBox_File_Excel.Name = "textBox_File_Excel";
             this.textBox_File_Excel.Size = new System.Drawing.Size(501, 20);
             this.textBox_File_Excel.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.textBox_File_Excel, "Ex: C:\\Folder\\Subfolder\\FileName.extension (use * or ? as wild cards)");
             this.textBox_File_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_Password_Excel
@@ -350,6 +352,7 @@
             this.richTextBox_Log.Size = new System.Drawing.Size(668, 414);
             this.richTextBox_Log.TabIndex = 0;
             this.richTextBox_Log.Text = "";
+            this.richTextBox_Log.TextChanged += new System.EventHandler(this.richTextBox_Log_TextChanged);
             // 
             // toolTip1
             // 
@@ -358,8 +361,6 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
-            this.toolTip1.SetToolTip(this.textBox_File_Excel, "Ex: C:\\Folder\\Subfolder\\FileName.extension (use * or ? as wild cards)");
-            this.toolTip1.SetToolTip(this.textBox_outPutPath_Excel, "Ex: C:\\Folder\\Subfolder\\ (use * or ? as wild cards)");
             // 
             // Form_Main
             // 

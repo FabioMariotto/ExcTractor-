@@ -11,7 +11,8 @@ namespace ExcTractor
     {
 
         public static string InstalPath = AppDomain.CurrentDomain.BaseDirectory;
-
+        public static string LogFilePath = InstalPath + "\\Log.txt";
+        public static string LogFilename = "Log.txt";
         /// <summary>
         /// Returns all text from the LOG file
         /// </summary>
@@ -20,20 +21,20 @@ namespace ExcTractor
         {
 
             //string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
-            string LogFile = InstalPath + "\\Log.txt";
+            
 
 
-            if (File.Exists(LogFile) == true)
+            if (File.Exists(LogFilePath) == true)
             {
                 StreamReader configReader;
-                configReader = new StreamReader(LogFile);
+                configReader = new StreamReader(LogFilePath);
                 string returnString = configReader.ReadToEnd();
                 configReader.Close();
                 return returnString;
             }
             else
             {
-                File.WriteAllText(LogFile, "");
+                File.WriteAllText(LogFilePath, "");
                 return "";
             }
         }
@@ -48,20 +49,19 @@ namespace ExcTractor
 
             try
             {
-                //string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
-                string LogFile = InstalPath + "\\Log.txt";
+                
 
 
-                if (File.Exists(LogFile) == true)
+                if (File.Exists(LogFilePath) == true)
                 {
                     StreamWriter configWriter;
-                    configWriter = new StreamWriter(LogFile, append);
+                    configWriter = new StreamWriter(LogFilePath, append);
                     configWriter.Write("\r\n" + DateTime.Now.ToString() + "; " + text);
                     configWriter.Close();
                 }
                 else
                 {
-                    File.WriteAllText(LogFile, text);
+                    File.WriteAllText(LogFilePath, text);
                 }
             }
             catch { }
@@ -77,18 +77,18 @@ namespace ExcTractor
             try
             {
                 //string LogFile = Directory.GetCurrentDirectory() + "\\Log.txt";
-                string LogFile = InstalPath + "\\Log.txt";
+                
 
-                if (File.Exists(LogFile) == true)
+                if (File.Exists(LogFilePath) == true)
                 {
                     StreamWriter configWriter;
-                    configWriter = new StreamWriter(LogFile, append);
+                    configWriter = new StreamWriter(LogFilePath, append);
                     configWriter.Write("\r\n" + DateTime.Now.ToString() + "; " + except.Source.ToString().Trim() + ": " + except.Message.ToString().Trim());
                     configWriter.Close();
                 }
                 else
                 {
-                    File.WriteAllText(LogFile, DateTime.Now.ToString() + "; " + except.Source.ToString().Trim() + ": " + except.Message.ToString().Trim());
+                    File.WriteAllText(LogFilePath, DateTime.Now.ToString() + "; " + except.Source.ToString().Trim() + ": " + except.Message.ToString().Trim());
                 }
             }
             catch { }

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,9 +22,37 @@ namespace ExcTractor
             InitializeComponent();
             tabControl_mainTabs.TabPages.Clear();
             UpdateConfigList();
+            Thread T = new Thread(new ThreadStart(() => updateLogText()));
+            T.Start();
 
         }
 
+        private void updateLogText()
+        {
+            string lastWrite = "";
+            while (true)
+            {
+                Support.CreateFile(LogFile.LogFilename);
+
+                FileInfo FileInfo = new FileInfo(LogFile.LogFilePath);
+                if (FileInfo.LastWriteTime.ToString() != lastWrite)
+                {
+                    lastWrite = FileInfo.LastWriteTime.ToString();
+                    string text = "";
+                    string[] lines = Support.getFileLines(LogFile.LogFilename);
+                    for (int i = lines.Length - 1; i >= 0; i--)
+                    {
+                        text = text + lines[i] + Environment.NewLine;
+                    }
+                   richTextBox_Log.Text = text;
+                   richTextBox_Log.Update();
+                    //TO DO CHANGE UPDATE TO ONLY WHEN DOUBLED CLICKED
+                    //TO DO: NOT UPDATING IF FILEH
+                }
+                break;
+                System.Threading.Thread.Sleep(3000);
+            }
+        }
 
         //User clicks on CREATE NEW CONFIG button
         private void button_NewConfig_Click(object sender, EventArgs e)
@@ -199,6 +228,11 @@ namespace ExcTractor
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void richTextBox_Log_TextChanged(object sender, EventArgs e)
         {
 
         }
