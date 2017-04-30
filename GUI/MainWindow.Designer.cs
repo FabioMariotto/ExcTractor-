@@ -57,10 +57,36 @@
             this.textBox_Host_Excel = new System.Windows.Forms.TextBox();
             this.tabPage_Log = new System.Windows.Forms.TabPage();
             this.richTextBox_Log = new System.Windows.Forms.RichTextBox();
+            this.tabPage_Config_ACCDB = new System.Windows.Forms.TabPage();
+            this.checkBox_modifiedOnly_accdb = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox_namePrefix_accdb = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button_browseOutputFolder_accdb = new System.Windows.Forms.Button();
+            this.button_openAccdb_accdb = new System.Windows.Forms.Button();
+            this.button_save_accdb = new System.Windows.Forms.Button();
+            this.button_tableFilters_accdb = new System.Windows.Forms.Button();
+            this.textBox_period_accdb = new System.Windows.Forms.TextBox();
+            this.textBox_output_accdb = new System.Windows.Forms.TextBox();
+            this.textBox_accdbFile_accdb = new System.Windows.Forms.TextBox();
+            this.textBox_password_accdb = new System.Windows.Forms.TextBox();
+            this.textBox_user_accdb = new System.Windows.Forms.TextBox();
+            this.textBox_host_accdb = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.folderBrowserDialog_output_Excel = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialog_ExcelFile_Excel = new System.Windows.Forms.OpenFileDialog();
+            this.button_restartService = new System.Windows.Forms.Button();
+            this.button_StopService = new System.Windows.Forms.Button();
             this.tabControl_mainTabs.SuspendLayout();
             this.tabPage_Config_Excel.SuspendLayout();
             this.tabPage_Log.SuspendLayout();
+            this.tabPage_Config_ACCDB.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox_ConfigList
@@ -68,13 +94,13 @@
             this.listBox_ConfigList.FormattingEnabled = true;
             this.listBox_ConfigList.Location = new System.Drawing.Point(15, 13);
             this.listBox_ConfigList.Name = "listBox_ConfigList";
-            this.listBox_ConfigList.Size = new System.Drawing.Size(146, 342);
+            this.listBox_ConfigList.Size = new System.Drawing.Size(146, 277);
             this.listBox_ConfigList.TabIndex = 0;
             this.listBox_ConfigList.SelectedIndexChanged += new System.EventHandler(this.listBox_ConfigList_SelectedIndexChanged);
             // 
             // button_NewConfig
             // 
-            this.button_NewConfig.Location = new System.Drawing.Point(16, 365);
+            this.button_NewConfig.Location = new System.Drawing.Point(16, 300);
             this.button_NewConfig.Name = "button_NewConfig";
             this.button_NewConfig.Size = new System.Drawing.Size(145, 23);
             this.button_NewConfig.TabIndex = 1;
@@ -85,7 +111,7 @@
             // 
             // button_DeleteConfig
             // 
-            this.button_DeleteConfig.Location = new System.Drawing.Point(15, 423);
+            this.button_DeleteConfig.Location = new System.Drawing.Point(15, 358);
             this.button_DeleteConfig.Name = "button_DeleteConfig";
             this.button_DeleteConfig.Size = new System.Drawing.Size(145, 23);
             this.button_DeleteConfig.TabIndex = 1;
@@ -96,7 +122,7 @@
             // 
             // button_RenameConfig
             // 
-            this.button_RenameConfig.Location = new System.Drawing.Point(16, 394);
+            this.button_RenameConfig.Location = new System.Drawing.Point(16, 329);
             this.button_RenameConfig.Name = "button_RenameConfig";
             this.button_RenameConfig.Size = new System.Drawing.Size(145, 23);
             this.button_RenameConfig.TabIndex = 1;
@@ -109,6 +135,7 @@
             // 
             this.tabControl_mainTabs.Controls.Add(this.tabPage_Config_Excel);
             this.tabControl_mainTabs.Controls.Add(this.tabPage_Log);
+            this.tabControl_mainTabs.Controls.Add(this.tabPage_Config_ACCDB);
             this.tabControl_mainTabs.Location = new System.Drawing.Point(178, 13);
             this.tabControl_mainTabs.Name = "tabControl_mainTabs";
             this.tabControl_mainTabs.SelectedIndex = 0;
@@ -148,7 +175,7 @@
             // checkBox_modifiedOnly_Excel
             // 
             this.checkBox_modifiedOnly_Excel.AutoSize = true;
-            this.checkBox_modifiedOnly_Excel.Location = new System.Drawing.Point(102, 247);
+            this.checkBox_modifiedOnly_Excel.Location = new System.Drawing.Point(105, 250);
             this.checkBox_modifiedOnly_Excel.Name = "checkBox_modifiedOnly_Excel";
             this.checkBox_modifiedOnly_Excel.Size = new System.Drawing.Size(109, 17);
             this.checkBox_modifiedOnly_Excel.TabIndex = 8;
@@ -159,7 +186,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 167);
+            this.label8.Location = new System.Drawing.Point(12, 170);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 13);
             this.label8.TabIndex = 6;
@@ -176,7 +203,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(226, 219);
+            this.label6.Location = new System.Drawing.Point(229, 222);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 4;
@@ -185,7 +212,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 219);
+            this.label5.Location = new System.Drawing.Point(12, 222);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 4;
@@ -194,7 +221,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 115);
+            this.label4.Location = new System.Drawing.Point(12, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 4;
@@ -203,7 +230,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 89);
+            this.label3.Location = new System.Drawing.Point(12, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 4;
@@ -212,7 +239,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 63);
+            this.label2.Location = new System.Drawing.Point(12, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 4;
@@ -221,7 +248,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 189);
+            this.label7.Location = new System.Drawing.Point(12, 192);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 4;
@@ -230,7 +257,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 33);
+            this.label1.Location = new System.Drawing.Point(12, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 4;
@@ -238,7 +265,6 @@
             // 
             // button_browseOutPath_Excel
             // 
-            this.button_browseOutPath_Excel.Enabled = false;
             this.button_browseOutPath_Excel.Location = new System.Drawing.Point(609, 186);
             this.button_browseOutPath_Excel.Name = "button_browseOutPath_Excel";
             this.button_browseOutPath_Excel.Size = new System.Drawing.Size(25, 20);
@@ -246,10 +272,10 @@
             this.button_browseOutPath_Excel.TabStop = false;
             this.button_browseOutPath_Excel.Text = "...";
             this.button_browseOutPath_Excel.UseVisualStyleBackColor = true;
+            this.button_browseOutPath_Excel.Click += new System.EventHandler(this.button_browseOutPath_Excel_Click);
             // 
             // button_BrowseFile_Excel
             // 
-            this.button_BrowseFile_Excel.Enabled = false;
             this.button_BrowseFile_Excel.Location = new System.Drawing.Point(609, 30);
             this.button_BrowseFile_Excel.Name = "button_BrowseFile_Excel";
             this.button_BrowseFile_Excel.Size = new System.Drawing.Size(25, 20);
@@ -257,6 +283,7 @@
             this.button_BrowseFile_Excel.TabStop = false;
             this.button_BrowseFile_Excel.Text = "...";
             this.button_BrowseFile_Excel.UseVisualStyleBackColor = true;
+            this.button_BrowseFile_Excel.Click += new System.EventHandler(this.button_BrowseFile_Excel_Click);
             // 
             // button_Save_Excel
             // 
@@ -352,7 +379,224 @@
             this.richTextBox_Log.Size = new System.Drawing.Size(668, 414);
             this.richTextBox_Log.TabIndex = 0;
             this.richTextBox_Log.Text = "";
-            this.richTextBox_Log.TextChanged += new System.EventHandler(this.richTextBox_Log_TextChanged);
+            // 
+            // tabPage_Config_ACCDB
+            // 
+            this.tabPage_Config_ACCDB.Controls.Add(this.checkBox_modifiedOnly_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label9);
+            this.tabPage_Config_ACCDB.Controls.Add(this.textBox_namePrefix_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label10);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label11);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label12);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label13);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label14);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label15);
+            this.tabPage_Config_ACCDB.Controls.Add(this.label16);
+            this.tabPage_Config_ACCDB.Controls.Add(this.button_browseOutputFolder_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.button_openAccdb_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.button_save_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.button_tableFilters_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.textBox_period_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.textBox_output_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.textBox_accdbFile_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.textBox_password_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.textBox_user_accdb);
+            this.tabPage_Config_ACCDB.Controls.Add(this.textBox_host_accdb);
+            this.tabPage_Config_ACCDB.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_Config_ACCDB.Name = "tabPage_Config_ACCDB";
+            this.tabPage_Config_ACCDB.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Config_ACCDB.Size = new System.Drawing.Size(670, 416);
+            this.tabPage_Config_ACCDB.TabIndex = 2;
+            this.tabPage_Config_ACCDB.Text = "Config";
+            this.tabPage_Config_ACCDB.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_modifiedOnly_accdb
+            // 
+            this.checkBox_modifiedOnly_accdb.AutoSize = true;
+            this.checkBox_modifiedOnly_accdb.Location = new System.Drawing.Point(105, 250);
+            this.checkBox_modifiedOnly_accdb.Name = "checkBox_modifiedOnly_accdb";
+            this.checkBox_modifiedOnly_accdb.Size = new System.Drawing.Size(109, 17);
+            this.checkBox_modifiedOnly_accdb.TabIndex = 8;
+            this.checkBox_modifiedOnly_accdb.Text = "Modified files only";
+            this.checkBox_modifiedOnly_accdb.UseVisualStyleBackColor = true;
+            this.checkBox_modifiedOnly_accdb.CheckedChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "File Name Prefix";
+            // 
+            // textBox_namePrefix_accdb
+            // 
+            this.textBox_namePrefix_accdb.Location = new System.Drawing.Point(102, 160);
+            this.textBox_namePrefix_accdb.Name = "textBox_namePrefix_accdb";
+            this.textBox_namePrefix_accdb.Size = new System.Drawing.Size(118, 20);
+            this.textBox_namePrefix_accdb.TabIndex = 5;
+            this.textBox_namePrefix_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(229, 222);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "[seconds]";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 222);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(87, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Extraction Period";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 118);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 13);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Password";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 92);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "User";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 66);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(42, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Host IP";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 192);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(63, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Output path";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 36);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 13);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "ACCDB File";
+            // 
+            // button_browseOutputFolder_accdb
+            // 
+            this.button_browseOutputFolder_accdb.Location = new System.Drawing.Point(609, 186);
+            this.button_browseOutputFolder_accdb.Name = "button_browseOutputFolder_accdb";
+            this.button_browseOutputFolder_accdb.Size = new System.Drawing.Size(25, 20);
+            this.button_browseOutputFolder_accdb.TabIndex = 3;
+            this.button_browseOutputFolder_accdb.TabStop = false;
+            this.button_browseOutputFolder_accdb.Text = "...";
+            this.button_browseOutputFolder_accdb.UseVisualStyleBackColor = true;
+            this.button_browseOutputFolder_accdb.Click += new System.EventHandler(this.button_browseOutPath_accdb_Click);
+            // 
+            // button_openAccdb_accdb
+            // 
+            this.button_openAccdb_accdb.Location = new System.Drawing.Point(609, 30);
+            this.button_openAccdb_accdb.Name = "button_openAccdb_accdb";
+            this.button_openAccdb_accdb.Size = new System.Drawing.Size(25, 20);
+            this.button_openAccdb_accdb.TabIndex = 3;
+            this.button_openAccdb_accdb.TabStop = false;
+            this.button_openAccdb_accdb.Text = "...";
+            this.button_openAccdb_accdb.UseVisualStyleBackColor = true;
+            this.button_openAccdb_accdb.Click += new System.EventHandler(this.button_BrowseFile_accdb_Click);
+            // 
+            // button_save_accdb
+            // 
+            this.button_save_accdb.Enabled = false;
+            this.button_save_accdb.Location = new System.Drawing.Point(528, 381);
+            this.button_save_accdb.Name = "button_save_accdb";
+            this.button_save_accdb.Size = new System.Drawing.Size(134, 29);
+            this.button_save_accdb.TabIndex = 9;
+            this.button_save_accdb.Text = "Saved";
+            this.button_save_accdb.UseVisualStyleBackColor = true;
+            this.button_save_accdb.Click += new System.EventHandler(this.button_Save_accdb_click);
+            // 
+            // button_tableFilters_accdb
+            // 
+            this.button_tableFilters_accdb.Location = new System.Drawing.Point(102, 319);
+            this.button_tableFilters_accdb.Name = "button_tableFilters_accdb";
+            this.button_tableFilters_accdb.Size = new System.Drawing.Size(177, 34);
+            this.button_tableFilters_accdb.TabIndex = 0;
+            this.button_tableFilters_accdb.TabStop = false;
+            this.button_tableFilters_accdb.Text = "Table Filters";
+            this.button_tableFilters_accdb.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.toolTip1.SetToolTip(this.button_tableFilters_accdb, "ACCDB file name; table Name; tag for filter[optional]; range[optional]\r\n(use * or" +
+        " ? as wild cards)");
+            this.button_tableFilters_accdb.UseVisualStyleBackColor = true;
+            this.button_tableFilters_accdb.Click += new System.EventHandler(this.button_tableFilters_accdb_Click);
+            // 
+            // textBox_period_accdb
+            // 
+            this.textBox_period_accdb.Location = new System.Drawing.Point(102, 212);
+            this.textBox_period_accdb.Name = "textBox_period_accdb";
+            this.textBox_period_accdb.Size = new System.Drawing.Size(118, 20);
+            this.textBox_period_accdb.TabIndex = 7;
+            this.textBox_period_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            // 
+            // textBox_output_accdb
+            // 
+            this.textBox_output_accdb.Location = new System.Drawing.Point(102, 186);
+            this.textBox_output_accdb.Name = "textBox_output_accdb";
+            this.textBox_output_accdb.Size = new System.Drawing.Size(501, 20);
+            this.textBox_output_accdb.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.textBox_output_accdb, "Ex: C:\\Folder\\Subfolder\\ (use * or ? as wild cards)");
+            this.textBox_output_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            // 
+            // textBox_accdbFile_accdb
+            // 
+            this.textBox_accdbFile_accdb.Location = new System.Drawing.Point(102, 30);
+            this.textBox_accdbFile_accdb.Name = "textBox_accdbFile_accdb";
+            this.textBox_accdbFile_accdb.Size = new System.Drawing.Size(501, 20);
+            this.textBox_accdbFile_accdb.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.textBox_accdbFile_accdb, "Ex: C:\\Folder\\Subfolder\\FileName.extension (use * or ? as wild cards)");
+            this.textBox_accdbFile_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            // 
+            // textBox_password_accdb
+            // 
+            this.textBox_password_accdb.Location = new System.Drawing.Point(102, 108);
+            this.textBox_password_accdb.Name = "textBox_password_accdb";
+            this.textBox_password_accdb.Size = new System.Drawing.Size(177, 20);
+            this.textBox_password_accdb.TabIndex = 4;
+            this.textBox_password_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            // 
+            // textBox_user_accdb
+            // 
+            this.textBox_user_accdb.Location = new System.Drawing.Point(102, 82);
+            this.textBox_user_accdb.Name = "textBox_user_accdb";
+            this.textBox_user_accdb.Size = new System.Drawing.Size(177, 20);
+            this.textBox_user_accdb.TabIndex = 3;
+            this.textBox_user_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            // 
+            // textBox_host_accdb
+            // 
+            this.textBox_host_accdb.Location = new System.Drawing.Point(102, 56);
+            this.textBox_host_accdb.Name = "textBox_host_accdb";
+            this.textBox_host_accdb.Size = new System.Drawing.Size(177, 20);
+            this.textBox_host_accdb.TabIndex = 2;
+            this.textBox_host_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
             // 
             // toolTip1
             // 
@@ -360,7 +604,28 @@
             this.toolTip1.InitialDelay = 500;
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
+            // button_restartService
+            // 
+            this.button_restartService.Location = new System.Drawing.Point(16, 426);
+            this.button_restartService.Name = "button_restartService";
+            this.button_restartService.Size = new System.Drawing.Size(145, 23);
+            this.button_restartService.TabIndex = 1;
+            this.button_restartService.TabStop = false;
+            this.button_restartService.Text = "Restart Service";
+            this.button_restartService.UseVisualStyleBackColor = true;
+            this.button_restartService.Click += new System.EventHandler(this.button_restartService_Click);
+            // 
+            // button_StopService
+            // 
+            this.button_StopService.Location = new System.Drawing.Point(16, 397);
+            this.button_StopService.Name = "button_StopService";
+            this.button_StopService.Size = new System.Drawing.Size(145, 23);
+            this.button_StopService.TabIndex = 1;
+            this.button_StopService.TabStop = false;
+            this.button_StopService.Text = "Stop Service";
+            this.button_StopService.UseVisualStyleBackColor = true;
+            this.button_StopService.Click += new System.EventHandler(this.button_stopService_Click);
             // 
             // Form_Main
             // 
@@ -369,15 +634,19 @@
             this.ClientSize = new System.Drawing.Size(864, 461);
             this.Controls.Add(this.tabControl_mainTabs);
             this.Controls.Add(this.button_RenameConfig);
+            this.Controls.Add(this.button_StopService);
+            this.Controls.Add(this.button_restartService);
             this.Controls.Add(this.button_DeleteConfig);
             this.Controls.Add(this.button_NewConfig);
             this.Controls.Add(this.listBox_ConfigList);
             this.Name = "Form_Main";
-            this.Text = ".: Maze - Excel Data Interface :.";
+            this.Text = "MAZE - Data Interface";
             this.tabControl_mainTabs.ResumeLayout(false);
             this.tabPage_Config_Excel.ResumeLayout(false);
             this.tabPage_Config_Excel.PerformLayout();
             this.tabPage_Log.ResumeLayout(false);
+            this.tabPage_Config_ACCDB.ResumeLayout(false);
+            this.tabPage_Config_ACCDB.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -413,6 +682,31 @@
         private System.Windows.Forms.TextBox textBox_NamePrefix_Excel;
         private System.Windows.Forms.CheckBox checkBox_modifiedOnly_Excel;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_output_Excel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog_ExcelFile_Excel;
+        private System.Windows.Forms.TabPage tabPage_Config_ACCDB;
+        private System.Windows.Forms.CheckBox checkBox_modifiedOnly_accdb;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox_namePrefix_accdb;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button button_browseOutputFolder_accdb;
+        private System.Windows.Forms.Button button_openAccdb_accdb;
+        private System.Windows.Forms.Button button_save_accdb;
+        private System.Windows.Forms.Button button_tableFilters_accdb;
+        private System.Windows.Forms.TextBox textBox_period_accdb;
+        private System.Windows.Forms.TextBox textBox_output_accdb;
+        private System.Windows.Forms.TextBox textBox_accdbFile_accdb;
+        private System.Windows.Forms.TextBox textBox_password_accdb;
+        private System.Windows.Forms.TextBox textBox_user_accdb;
+        private System.Windows.Forms.TextBox textBox_host_accdb;
+        private System.Windows.Forms.Button button_restartService;
+        private System.Windows.Forms.Button button_StopService;
     }
 }
 

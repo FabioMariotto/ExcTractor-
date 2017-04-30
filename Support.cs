@@ -10,14 +10,16 @@ namespace ExcTractor
 {
     public static class Support
     {
-        private static string InstalPath = AppDomain.CurrentDomain.BaseDirectory;
-        private static string ProcessedFilesLog = "ProcessedFilesLog.txt";
+        public static string InstalPath = AppDomain.CurrentDomain.BaseDirectory;
+        public static string ProcessedFilesLog = "ProcessedFilesLog.txt";
+        public static string WhitelistFilePrefix = "WhiteList_";
+        public static string TablelistFilePrefix = "TableList_";
 
         //Methods for checking if files were already processed and updating the record of processed files.
         #region Processed Files Log Managing
 
         /// <summary>
-        /// Returns the unique MD5 string for a file.
+        /// Returns the unique HASH string for a file.
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
@@ -29,11 +31,15 @@ namespace ExcTractor
                 {
                     using (var stream = File.OpenRead(filename))
                     {
-                        return BitConverter.ToString(md5.ComputeHash(stream));
+                        string Hash = BitConverter.ToString(md5.ComputeHash(stream));
+                        stream.Close();
+                        stream.Dispose();
+                        return Hash;
                     }
                 }
                 catch (IOException ex)
                 {
+                    LogFile.write_LogFile("Error building HASH for processed file: "+ ex.Message);
                     return null;
                 }
             }
@@ -51,11 +57,14 @@ namespace ExcTractor
 
             foreach (string ProcessedFile in ProcessedFiles)
             {
-                if (ProcessedFile.Split(';')[0] == m_filePath && ProcessedFile.Split().Length > 2)
+                if (ProcessedFile.Split(';')[0] == m_filePath && ProcessedFile.Split().Length > 1)
                 {
                     FileInfo FileInfo = new FileInfo(m_filePath);
-                    if (FileInfo.LastWriteTime.ToString() == ProcessedFile.Split(';')[1] && (BuildMd5Checksum(m_filePath) == ProcessedFile.Split(';')[2]))
-                        return false; //file wasnt modified
+                    //LogFile.write_LogFile("FileModified?: " + FileInfo.LastWriteTime.ToString() + "==" + ProcessedFile.Split(';')[1] + " e " + (BuildMd5Checksum(m_filePath) + "==" + ProcessedFile.Split(';')[2]));
+                    if (FileInfo.Name.Contains("~$"))
+                        return false; //file is a temporary file
+                    if (FileInfo.LastWriteTime.ToString() == ProcessedFile.Split(';')[1]) ;// && (BuildMd5Checksum(m_filePath) == ProcessedFile.Split(';')[2]))
+                        return false; //file wasnt modified                   
                     return true; //file was modified
                 }
 
@@ -76,17 +85,17 @@ namespace ExcTractor
 
             for (int i = 0; i < ProcessedFiles.Length; i++)
             {
-                if (ProcessedFiles[i].Split(';')[0] == m_filePath && ProcessedFiles[i].Split().Length > 2)
+                if (ProcessedFiles[i].Split(';')[0] == m_filePath && ProcessedFiles[i].Split().Length >1)
                 {
                     //update existing record for that file
-                    ProcessedFiles[i] = m_filePath + ";" + FileInfo.LastWriteTime.ToString() + ";" + BuildMd5Checksum(m_filePath);
+                    ProcessedFiles[i] = m_filePath + ";" + FileInfo.LastWriteTime.ToString();// + ";" + BuildMd5Checksum(m_filePath);
                     //rewrite file
                     WriteAllLines(ProcessedFilesLog, ProcessedFiles, true);
                     return;
                 }
             }
             //add new record to end of file
-            Support.WriteOneLine(ProcessedFilesLog,m_filePath + ";" + FileInfo.LastWriteTime.ToString() + ";" + BuildMd5Checksum(m_filePath),true);
+            Support.WriteOneLine(ProcessedFilesLog, m_filePath + ";" + FileInfo.LastWriteTime.ToString(), true);// + ";" + BuildMd5Checksum(m_filePath),true);
         }
 
         #endregion
@@ -115,6 +124,31 @@ namespace ExcTractor
             if (!File.Exists(InstalPath + "\\" + FileName))
             {
                 File.WriteAllText(InstalPath + "\\" + FileName, "");
+            }
+        }
+
+        /// <summary>
+        /// Deletes a file from install path.
+        /// </summary>
+        /// <param name="FileName">Name of the file like: FileName.txt</param>
+        public static void DeleteFile(string FileName)
+        {
+            if (File.Exists(InstalPath + "\\" + FileName))
+            {
+                File.Delete(InstalPath + "\\" + FileName);
+            }
+        }
+
+        /// <summary>
+        /// Renames a file from install path.
+        /// </summary>
+        /// <param name="FileName">Name of the old file like: FileName.txt</param>
+        /// /// <param name="NewFileName">Name of the new file like: FileName.txt</param>
+        public static void RenameFile(string FileName, string NewFileName)
+        {
+            if (File.Exists(InstalPath + "\\" + FileName))
+            {
+                File.Move(InstalPath + "\\" + FileName, InstalPath + "\\" + NewFileName);
             }
         }
 

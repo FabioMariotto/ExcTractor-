@@ -15,6 +15,7 @@ namespace ExcTractor
         public static string Attrib_Name = "Name";
 
         public static string TypeConfig_Excel = "Excel File";
+        public static string TypeConfig_ACCDB = "ACC DB";
 
         public static string AttribExcel_FilePath = "FilePath";
         public static string AttribExcel_Host = "Host";
@@ -24,9 +25,19 @@ namespace ExcTractor
         public static string AttribExcel_Period = "Period";
         public static string AttribExcel_NamePrefix = "NamePrefix";
         public static string AttribExcel_ModifiedOnly = "ModifiedOnly";
-        public static string AttribExcel_ExcelName = "ExcelName";
-        public static string AttribExcel_TabName = "TabName";
-        public static string AttribExcel_TagName = "TagName";
+        //public static string AttribExcel_ExcelName = "ExcelName";
+        //public static string AttribExcel_TabName = "TabName";
+        //public static string AttribExcel_TagName = "TagName";
+
+        public static string AttribAccdb_FilePath = "FilePath";
+        public static string AttribAccdb_Host = "Host";
+        public static string AttribAccdb_User = "User";
+        public static string AttribAccdb_Password = "Password";
+        public static string AttribAccdb_Destination = "Destination";
+        public static string AttribAccdb_Period = "Period";
+        public static string AttribAccdb_NamePrefix = "NamePrefix";
+        public static string AttribAccdb_ModifiedOnly = "ModifiedOnly";
+
 
         public static string InstalPath = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -88,6 +99,7 @@ namespace ExcTractor
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(ConfigFile);
+
 
                 foreach (XmlNode itemNode in doc.SelectNodes("/AllConfig/Config"))
                 {
@@ -231,45 +243,45 @@ namespace ExcTractor
         /// <param name="atribute_name"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static bool write_whitelist(string config_name, string excel_name, string tab_name, string tag_name=null)
-        {
-            string ConfigFile = InstalPath + "\\Configuration.xml";
-            if (File.Exists(ConfigFile))
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.Load(ConfigFile);
+        //public static bool write_whitelist(string config_name, string excel_name, string tab_name, string tag_name=null)
+        //{
+        //    string ConfigFile = InstalPath + "\\Configuration.xml";
+        //    if (File.Exists(ConfigFile))
+        //    {
+        //        XmlDocument doc = new XmlDocument();
+        //        doc.Load(ConfigFile);
 
-                foreach (XmlNode itemNode in doc.SelectNodes("/AllConfig/Config"))
-                {
-                    if (itemNode.Attributes[Attrib_Name] == null || itemNode.Attributes[Attrib_Name].Value != config_name)
-                        continue;
+        //        foreach (XmlNode itemNode in doc.SelectNodes("/AllConfig/Config"))
+        //        {
+        //            if (itemNode.Attributes[Attrib_Name] == null || itemNode.Attributes[Attrib_Name].Value != config_name)
+        //                continue;
 
-                    foreach (XmlNode whiteNode in itemNode.SelectNodes("/WhiteList"))
-                    {
+        //            foreach (XmlNode whiteNode in itemNode.SelectNodes("/WhiteList"))
+        //            {
 
 
-                        if (whiteNode.Attributes[AttribExcel_ExcelName] != null)
-                        {
-                            whiteNode.Attributes[AttribExcel_ExcelName].Value = excel_name;
-                        }
-                        else
-                        {
-                            XmlAttribute ConfigName = doc.CreateAttribute(AttribExcel_ExcelName);
-                            ConfigName.Value = excel_name;
-                            whiteNode.Attributes.Append(ConfigName);
-                        }
-                        doc.Save(ConfigFile);
-                        return true;
-                    }
+        //                if (whiteNode.Attributes[AttribExcel_ExcelName] != null)
+        //                {
+        //                    whiteNode.Attributes[AttribExcel_ExcelName].Value = excel_name;
+        //                }
+        //                else
+        //                {
+        //                    XmlAttribute ConfigName = doc.CreateAttribute(AttribExcel_ExcelName);
+        //                    ConfigName.Value = excel_name;
+        //                    whiteNode.Attributes.Append(ConfigName);
+        //                }
+        //                doc.Save(ConfigFile);
+        //                return true;
+        //            }
 
-                    LogFile.write_LogFile("Config name \"" + config_name + "\" has no whitelist nodes for writing whitelist.");
-                    return false;
-                }
-            }
-                LogFile.write_LogFile("Config name \"" + config_name + "\" was not found for writing whitelist.");
-                return false;
+        //            LogFile.write_LogFile("Config name \"" + config_name + "\" has no whitelist nodes for writing whitelist.");
+        //            return false;
+        //        }
+        //    }
+        //        LogFile.write_LogFile("Config name \"" + config_name + "\" was not found for writing whitelist.");
+        //        return false;
            
-        }
+        //}
 
 
 

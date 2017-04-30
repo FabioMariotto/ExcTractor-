@@ -21,7 +21,8 @@ namespace ExcTractor.GUI
             InitializeComponent();
 
             comboBox_configTypes.Items.Clear();
-            comboBox_configTypes.Items.Add("Excel File");
+            comboBox_configTypes.Items.Add(ConfigFile.TypeConfig_Excel);
+            comboBox_configTypes.Items.Add(ConfigFile.TypeConfig_ACCDB);
             //comboBox_configTypes.Items.Add("Another config option");
             comboBox_configTypes.SelectedItem = 0;
             comboBox_configTypes.Refresh();
