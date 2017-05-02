@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.listBox_ConfigList = new System.Windows.Forms.ListBox();
             this.button_NewConfig = new System.Windows.Forms.Button();
             this.button_DeleteConfig = new System.Windows.Forms.Button();
@@ -323,7 +324,7 @@
             this.textBox_outPutPath_Excel.Size = new System.Drawing.Size(501, 20);
             this.textBox_outPutPath_Excel.TabIndex = 6;
             this.toolTip1.SetToolTip(this.textBox_outPutPath_Excel, "Ex: C:\\Folder\\Subfolder\\ (use * or ? as wild cards)");
-            this.textBox_outPutPath_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
+            this.textBox_outPutPath_Excel.TextChanged += new System.EventHandler(this.ExcelTab_excelOutPath_ValueChanged);
             // 
             // textBox_File_Excel
             // 
@@ -332,7 +333,7 @@
             this.textBox_File_Excel.Size = new System.Drawing.Size(501, 20);
             this.textBox_File_Excel.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBox_File_Excel, "Ex: C:\\Folder\\Subfolder\\FileName.extension (use * or ? as wild cards)");
-            this.textBox_File_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
+            this.textBox_File_Excel.TextChanged += new System.EventHandler(this.ExcelTab_excelFile_ValueChanged);
             // 
             // textBox_Password_Excel
             // 
@@ -563,7 +564,7 @@
             this.textBox_output_accdb.Size = new System.Drawing.Size(501, 20);
             this.textBox_output_accdb.TabIndex = 6;
             this.toolTip1.SetToolTip(this.textBox_output_accdb, "Ex: C:\\Folder\\Subfolder\\ (use * or ? as wild cards)");
-            this.textBox_output_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            this.textBox_output_accdb.TextChanged += new System.EventHandler(this.accdbTab_OutPath_ValueChanged);
             // 
             // textBox_accdbFile_accdb
             // 
@@ -572,7 +573,7 @@
             this.textBox_accdbFile_accdb.Size = new System.Drawing.Size(501, 20);
             this.textBox_accdbFile_accdb.TabIndex = 1;
             this.toolTip1.SetToolTip(this.textBox_accdbFile_accdb, "Ex: C:\\Folder\\Subfolder\\FileName.extension (use * or ? as wild cards)");
-            this.textBox_accdbFile_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
+            this.textBox_accdbFile_accdb.TextChanged += new System.EventHandler(this.accdbTab_accdbFile_ValueChanged);
             // 
             // textBox_password_accdb
             // 
@@ -639,6 +640,7 @@
             this.Controls.Add(this.button_DeleteConfig);
             this.Controls.Add(this.button_NewConfig);
             this.Controls.Add(this.listBox_ConfigList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Main";
             this.Text = "MAZE - Data Interface";
             this.tabControl_mainTabs.ResumeLayout(false);

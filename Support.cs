@@ -63,7 +63,7 @@ namespace ExcTractor
                     //LogFile.write_LogFile("FileModified?: " + FileInfo.LastWriteTime.ToString() + "==" + ProcessedFile.Split(';')[1] + " e " + (BuildMd5Checksum(m_filePath) + "==" + ProcessedFile.Split(';')[2]));
                     if (FileInfo.Name.Contains("~$"))
                         return false; //file is a temporary file
-                    if (FileInfo.LastWriteTime.ToString() == ProcessedFile.Split(';')[1]) ;// && (BuildMd5Checksum(m_filePath) == ProcessedFile.Split(';')[2]))
+                    if (FileInfo.LastWriteTime.ToString() == ProcessedFile.Split(';')[1])// && (BuildMd5Checksum(m_filePath) == ProcessedFile.Split(';')[2]))
                         return false; //file wasnt modified                   
                     return true; //file was modified
                 }
@@ -163,7 +163,7 @@ namespace ExcTractor
             {
                 return System.IO.File.ReadAllLines(InstalPath + "\\" + FileName, Encoding.UTF8);
             }
-            catch (Exception e)
+            catch
             {
                 LogFile.write_LogFile("Fail trying to read lines from file: " + FileName);
                 return new string[] { "" };

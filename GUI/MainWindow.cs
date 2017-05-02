@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -256,6 +257,24 @@ namespace ExcTractor
         //Excel tab controls
         #region EXCEL TAB CONFIGS
 
+        
+        private void ExcelTab_excelFile_ValueChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(textBox_File_Excel.Text, @"(.*[\\|\/])([^\\|\/]*)(\.xl.?.?$)"))
+                textBox_File_Excel.ForeColor = Color.Red;
+            else
+                textBox_File_Excel.ForeColor = Color.Black;
+            ExcelTab_AnyElement_ValueChanged(sender, e);
+        }
+        private void ExcelTab_excelOutPath_ValueChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(textBox_outPutPath_Excel.Text, @"(.*[\\|\/])([^\\|\/]*)([\\|\/]$)"))
+                textBox_outPutPath_Excel.ForeColor = Color.Red;
+            else
+                textBox_outPutPath_Excel.ForeColor = Color.Black;
+            ExcelTab_AnyElement_ValueChanged(sender, e);
+        }
+        
         //Event when any text box on EXCEL tab value is changed
         private void ExcelTab_AnyElement_ValueChanged(object sender, EventArgs e)
         {
@@ -339,6 +358,24 @@ namespace ExcTractor
 
         //ACCDB tab controls
         #region ACCDB TAB CONFIGS
+
+
+        private void accdbTab_OutPath_ValueChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(textBox_output_accdb.Text, @"(.*[\\|\/])([^\\|\/]*)([\\|\/]$)"))
+                textBox_output_accdb.ForeColor = Color.Red;
+            else
+                textBox_output_accdb.ForeColor = Color.Black;
+            accdbTab_AnyElement_ValueChanged(sender, e);
+        }
+        private void accdbTab_accdbFile_ValueChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(textBox_accdbFile_accdb.Text, @"(.*[\\|\/])([^\\|\/]*)(\..*db$)"))
+                textBox_accdbFile_accdb.ForeColor = Color.Red;
+            else
+                textBox_accdbFile_accdb.ForeColor = Color.Black;
+            accdbTab_AnyElement_ValueChanged(sender, e);
+        }
 
         //Event when any text box on accdb tab value is changed
         private void accdbTab_AnyElement_ValueChanged(object sender, EventArgs e)
