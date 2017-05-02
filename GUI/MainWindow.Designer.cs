@@ -83,11 +83,13 @@
             this.folderBrowserDialog_output_Excel = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog_ExcelFile_Excel = new System.Windows.Forms.OpenFileDialog();
             this.button_restartService = new System.Windows.Forms.Button();
-            this.button_StopService = new System.Windows.Forms.Button();
+            this.label_ServiceStatus = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl_mainTabs.SuspendLayout();
             this.tabPage_Config_Excel.SuspendLayout();
             this.tabPage_Log.SuspendLayout();
             this.tabPage_Config_ACCDB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox_ConfigList
@@ -95,15 +97,15 @@
             this.listBox_ConfigList.FormattingEnabled = true;
             this.listBox_ConfigList.Location = new System.Drawing.Point(15, 13);
             this.listBox_ConfigList.Name = "listBox_ConfigList";
-            this.listBox_ConfigList.Size = new System.Drawing.Size(146, 277);
+            this.listBox_ConfigList.Size = new System.Drawing.Size(146, 160);
             this.listBox_ConfigList.TabIndex = 0;
             this.listBox_ConfigList.SelectedIndexChanged += new System.EventHandler(this.listBox_ConfigList_SelectedIndexChanged);
             // 
             // button_NewConfig
             // 
-            this.button_NewConfig.Location = new System.Drawing.Point(16, 300);
+            this.button_NewConfig.Location = new System.Drawing.Point(16, 182);
             this.button_NewConfig.Name = "button_NewConfig";
-            this.button_NewConfig.Size = new System.Drawing.Size(145, 23);
+            this.button_NewConfig.Size = new System.Drawing.Size(146, 23);
             this.button_NewConfig.TabIndex = 1;
             this.button_NewConfig.TabStop = false;
             this.button_NewConfig.Text = "New Config";
@@ -112,9 +114,9 @@
             // 
             // button_DeleteConfig
             // 
-            this.button_DeleteConfig.Location = new System.Drawing.Point(15, 358);
+            this.button_DeleteConfig.Location = new System.Drawing.Point(15, 240);
             this.button_DeleteConfig.Name = "button_DeleteConfig";
-            this.button_DeleteConfig.Size = new System.Drawing.Size(145, 23);
+            this.button_DeleteConfig.Size = new System.Drawing.Size(147, 23);
             this.button_DeleteConfig.TabIndex = 1;
             this.button_DeleteConfig.TabStop = false;
             this.button_DeleteConfig.Text = "Delete Config";
@@ -123,9 +125,9 @@
             // 
             // button_RenameConfig
             // 
-            this.button_RenameConfig.Location = new System.Drawing.Point(16, 329);
+            this.button_RenameConfig.Location = new System.Drawing.Point(16, 211);
             this.button_RenameConfig.Name = "button_RenameConfig";
-            this.button_RenameConfig.Size = new System.Drawing.Size(145, 23);
+            this.button_RenameConfig.Size = new System.Drawing.Size(146, 23);
             this.button_RenameConfig.TabIndex = 1;
             this.button_RenameConfig.TabStop = false;
             this.button_RenameConfig.Text = "Rename Config";
@@ -227,6 +229,7 @@
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Password";
+            this.label4.Visible = false;
             // 
             // label3
             // 
@@ -236,6 +239,7 @@
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "User";
+            this.label3.Visible = false;
             // 
             // label2
             // 
@@ -245,6 +249,7 @@
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Host IP";
+            this.label2.Visible = false;
             // 
             // label7
             // 
@@ -341,6 +346,7 @@
             this.textBox_Password_Excel.Name = "textBox_Password_Excel";
             this.textBox_Password_Excel.Size = new System.Drawing.Size(177, 20);
             this.textBox_Password_Excel.TabIndex = 4;
+            this.textBox_Password_Excel.Visible = false;
             this.textBox_Password_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_User_Excel
@@ -349,6 +355,7 @@
             this.textBox_User_Excel.Name = "textBox_User_Excel";
             this.textBox_User_Excel.Size = new System.Drawing.Size(177, 20);
             this.textBox_User_Excel.TabIndex = 3;
+            this.textBox_User_Excel.Visible = false;
             this.textBox_User_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // textBox_Host_Excel
@@ -357,6 +364,7 @@
             this.textBox_Host_Excel.Name = "textBox_Host_Excel";
             this.textBox_Host_Excel.Size = new System.Drawing.Size(177, 20);
             this.textBox_Host_Excel.TabIndex = 2;
+            this.textBox_Host_Excel.Visible = false;
             this.textBox_Host_Excel.TextChanged += new System.EventHandler(this.ExcelTab_AnyElement_ValueChanged);
             // 
             // tabPage_Log
@@ -465,6 +473,7 @@
             this.label12.Size = new System.Drawing.Size(53, 13);
             this.label12.TabIndex = 4;
             this.label12.Text = "Password";
+            this.label12.Visible = false;
             // 
             // label13
             // 
@@ -474,6 +483,7 @@
             this.label13.Size = new System.Drawing.Size(29, 13);
             this.label13.TabIndex = 4;
             this.label13.Text = "User";
+            this.label13.Visible = false;
             // 
             // label14
             // 
@@ -483,6 +493,7 @@
             this.label14.Size = new System.Drawing.Size(42, 13);
             this.label14.TabIndex = 4;
             this.label14.Text = "Host IP";
+            this.label14.Visible = false;
             // 
             // label15
             // 
@@ -581,6 +592,7 @@
             this.textBox_password_accdb.Name = "textBox_password_accdb";
             this.textBox_password_accdb.Size = new System.Drawing.Size(177, 20);
             this.textBox_password_accdb.TabIndex = 4;
+            this.textBox_password_accdb.Visible = false;
             this.textBox_password_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
             // 
             // textBox_user_accdb
@@ -589,6 +601,7 @@
             this.textBox_user_accdb.Name = "textBox_user_accdb";
             this.textBox_user_accdb.Size = new System.Drawing.Size(177, 20);
             this.textBox_user_accdb.TabIndex = 3;
+            this.textBox_user_accdb.Visible = false;
             this.textBox_user_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
             // 
             // textBox_host_accdb
@@ -597,6 +610,7 @@
             this.textBox_host_accdb.Name = "textBox_host_accdb";
             this.textBox_host_accdb.Size = new System.Drawing.Size(177, 20);
             this.textBox_host_accdb.TabIndex = 2;
+            this.textBox_host_accdb.Visible = false;
             this.textBox_host_accdb.TextChanged += new System.EventHandler(this.accdbTab_AnyElement_ValueChanged);
             // 
             // toolTip1
@@ -608,34 +622,47 @@
             // 
             // button_restartService
             // 
-            this.button_restartService.Location = new System.Drawing.Point(16, 426);
+            this.button_restartService.Enabled = false;
+            this.button_restartService.Location = new System.Drawing.Point(17, 421);
             this.button_restartService.Name = "button_restartService";
             this.button_restartService.Size = new System.Drawing.Size(145, 23);
             this.button_restartService.TabIndex = 1;
             this.button_restartService.TabStop = false;
-            this.button_restartService.Text = "Restart Service";
+            this.button_restartService.Text = "Start Service";
             this.button_restartService.UseVisualStyleBackColor = true;
             this.button_restartService.Click += new System.EventHandler(this.button_restartService_Click);
             // 
-            // button_StopService
+            // label_ServiceStatus
             // 
-            this.button_StopService.Location = new System.Drawing.Point(16, 397);
-            this.button_StopService.Name = "button_StopService";
-            this.button_StopService.Size = new System.Drawing.Size(145, 23);
-            this.button_StopService.TabIndex = 1;
-            this.button_StopService.TabStop = false;
-            this.button_StopService.Text = "Stop Service";
-            this.button_StopService.UseVisualStyleBackColor = true;
-            this.button_StopService.Click += new System.EventHandler(this.button_stopService_Click);
+            this.label_ServiceStatus.AutoSize = true;
+            this.label_ServiceStatus.Location = new System.Drawing.Point(41, 403);
+            this.label_ServiceStatus.Name = "label_ServiceStatus";
+            this.label_ServiceStatus.Size = new System.Drawing.Size(86, 13);
+            this.label_ServiceStatus.TabIndex = 3;
+            this.label_ServiceStatus.Text = "Service Stopped";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MAZE.Properties.Resources.maze_logo;
+            this.pictureBox1.InitialImage = global::MAZE.Properties.Resources.maze_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(35, 280);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(105, 105);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 461);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label_ServiceStatus);
             this.Controls.Add(this.tabControl_mainTabs);
             this.Controls.Add(this.button_RenameConfig);
-            this.Controls.Add(this.button_StopService);
             this.Controls.Add(this.button_restartService);
             this.Controls.Add(this.button_DeleteConfig);
             this.Controls.Add(this.button_NewConfig);
@@ -649,7 +676,9 @@
             this.tabPage_Log.ResumeLayout(false);
             this.tabPage_Config_ACCDB.ResumeLayout(false);
             this.tabPage_Config_ACCDB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -708,7 +737,8 @@
         private System.Windows.Forms.TextBox textBox_user_accdb;
         private System.Windows.Forms.TextBox textBox_host_accdb;
         private System.Windows.Forms.Button button_restartService;
-        private System.Windows.Forms.Button button_StopService;
+        private System.Windows.Forms.Label label_ServiceStatus;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

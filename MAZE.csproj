@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MAZE2.ico" />
+    <None Include="maze_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

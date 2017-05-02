@@ -18,13 +18,14 @@ namespace ExcTractor
 {
     public partial class Form_Main : Form
     {
+        string lastWrite = "";
 
         public Form_Main()
         {
             InitializeComponent();
             tabControl_mainTabs.TabPages.Clear();
             UpdateConfigList();
-            Thread T = new Thread(new ThreadStart(() => updateLogText()));
+            Thread T = new Thread(new ThreadStart(() => updateGUI()));
             T.IsBackground = true;
             T.Start();
 
@@ -33,30 +34,66 @@ namespace ExcTractor
         //Commnn controls for the main window
         #region Main window controls
 
-        //updates the log window every 3 seconds
-        private void updateLogText()
+       //updates the GUI periodcally on a separate thread
+        private void updateGUI()
         {
-            string lastWrite = "";
+            
             while (true)
             {
-                Support.CreateFile(LogFile.LogFilename);
+                updateLOG();
 
-                FileInfo FileInfo = new FileInfo(LogFile.LogFilePath);
-                if (FileInfo.LastWriteTime.ToString() != lastWrite)
-                {
-                    lastWrite = FileInfo.LastWriteTime.ToString();
-                    string text = "";
-                    string[] lines = Support.getFileLines(LogFile.LogFilename);
-                    for (int i = lines.Length - 1; i >= 0; i--)
-                    {
-                        text = text + lines[i] + Environment.NewLine;
-                    }
-                   richTextBox_Log.Text = text;
-                }
-                
-                System.Threading.Thread.Sleep(3000);
+                updateServiceStatus();
+
+                System.Threading.Thread.Sleep(2000);
             }
         }
+
+        //update service status on GUI
+        private void updateServiceStatus()
+        {
+            ServiceController serviceController = new ServiceController("MAZE");
+
+            if (serviceController.Status.Equals(ServiceControllerStatus.Running))
+            {
+                this.button_restartService.Click -= new System.EventHandler(this.button_restartService_Click);
+                this.button_restartService.Click += new System.EventHandler(this.button_stopService_Click);
+                label_ServiceStatus.Text = "Service Running";
+                label_ServiceStatus.ForeColor = Color.Green;
+                button_restartService.Text = "Stop Service";
+                button_restartService.Enabled = true;
+
+            }
+                
+            else if (serviceController.Status.Equals(ServiceControllerStatus.Stopped))
+            {
+                this.button_restartService.Click -= new System.EventHandler(this.button_stopService_Click);
+                this.button_restartService.Click += new System.EventHandler(this.button_restartService_Click);
+                label_ServiceStatus.Text = "Service Stopped";
+                label_ServiceStatus.ForeColor = Color.DarkRed;
+                button_restartService.Text = "Start Service";
+                button_restartService.Enabled = true;
+            }
+        }
+
+        //updates the log window 
+        private void updateLOG()
+        {
+            Support.CreateFile(LogFile.LogFilename);
+
+            FileInfo FileInfo = new FileInfo(LogFile.LogFilePath);
+            if (FileInfo.LastWriteTime.ToString() != lastWrite)
+            {
+                lastWrite = FileInfo.LastWriteTime.ToString();
+                string text = "";
+                string[] lines = Support.getFileLines(LogFile.LogFilename);
+                for (int i = lines.Length - 1; i >= 0; i--)
+                {
+                    text = text + lines[i] + Environment.NewLine;
+                }
+                richTextBox_Log.Text = text;
+            }
+        }
+
 
         //User clicks on CREATE NEW CONFIG button
         private void button_NewConfig_Click(object sender, EventArgs e)
@@ -125,19 +162,16 @@ namespace ExcTractor
             try
             {
                 
-                if ((serviceController.Status.Equals(ServiceControllerStatus.Running)) || (serviceController.Status.Equals(ServiceControllerStatus.StartPending)))
-                {
-                    serviceController.Stop();
-                }
+                //if ((serviceController.Status.Equals(ServiceControllerStatus.Running)) || (serviceController.Status.Equals(ServiceControllerStatus.StartPending)))
+                //{
+                //    serviceController.Stop();
+                //}
+                button_restartService.Text = "Starting...";
                 button_restartService.Enabled = false;
-                button_restartService.Text = "Restarting...";
-                serviceController.WaitForStatus(ServiceControllerStatus.Stopped);
                 serviceController.Start();
                 serviceController.WaitForStatus(ServiceControllerStatus.Running);
-                button_restartService.Enabled = true;
-                button_restartService.Text = "Restart Service";
-                button_StopService.Enabled = true;
-                button_StopService.Text = "Stop Service";
+               
+                
             }
             catch (Exception exc)
             {
@@ -153,12 +187,10 @@ namespace ExcTractor
 
                 if ((serviceController.Status.Equals(ServiceControllerStatus.Running)) || (serviceController.Status.Equals(ServiceControllerStatus.StartPending)))
                 {
-                    
+                    button_restartService.Text = "Stopping...";
+                    button_restartService.Enabled = false;
                     serviceController.Stop();
                     serviceController.WaitForStatus(ServiceControllerStatus.Stopped);
-                    button_StopService.Enabled = false;
-                    button_StopService.Text = "Service stopped";
-
                 }
             }
             catch (Exception exc)
@@ -458,8 +490,12 @@ namespace ExcTractor
         }
 
 
+
         #endregion
 
-        
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
